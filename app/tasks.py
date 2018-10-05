@@ -15,7 +15,7 @@ def simple_oura_import(oura_user):
         OURA_BASE_URL + '/userinfo?access_token={}'.format(
             oura_user.get_access_token()))
     if profile.status_code == 200:
-        oura_data['profile'] = profile
+        oura_data['profile'] = profile.json()
     start_date = '2015-01-01'
     end_date = str(datetime.date.today())
     sleep = requests.get(
