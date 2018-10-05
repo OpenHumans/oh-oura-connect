@@ -35,9 +35,9 @@ class OpenHumansMember(models.Model):
         self.save()
 
 
-class SpotifyUser(models.Model):
+class OuraUser(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE,
-                                related_name='spotify_user')
+                                related_name='oura_user')
     access_token = models.TextField()
     refresh_token = models.TextField()
     expiration_time = models.DateTimeField()
@@ -48,12 +48,12 @@ class SpotifyUser(models.Model):
         return self.access_token
 
     def refresh_tokens(self):
-        res = requests.post('https://accounts.spotify.com/api/token',
+        res = requests.post('https://api.ouraring.com/oauth/token',
                             data={
                                 'grant_type': 'refresh_token',
                                 'refresh_token': self.refresh_token,
-                                'client_id': os.getenv('SPOTIFY_CLIENT_ID'),
-                                'client_secret': os.getenv('SPOTIFY_CLIENT_SECRET')
+                                'client_id': os.getenv('OURA_CLIENT_ID'),
+                                'client_secret': os.getenv('OURA_CLIENT_SECRET')
                             }).json()
         self.access_token = res['access_token']
         self.expiration_time: arrow.utcnow().shift(

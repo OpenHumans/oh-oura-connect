@@ -2,8 +2,8 @@
 
 {% block content %}
     <div class="jumbotron">
-        <h1 class="display-4">SpotifyConnect</h1>
-        <p class="lead">This connects your Spotify account to OpenHumans and recommends music to you based on a set of parameters that you can tweak</p>
+        <h1 class="display-4">OH Oura Connect</h1>
+        <p class="lead">This connects your Oura account to OpenHumans and recommends music to you based on a set of parameters that you can tweak</p>
         <hr class="my-4">
         <p>
             <a href="{% if request.user.is_authenticated %} {% url 'dashboard' %} {% else %} {% url 'authorize' %} {% endif %}">
@@ -30,7 +30,7 @@
                 <li>
                     <b>Login or create an account</b>
                     <p class="mb-1">
-                        You can connect your <em>Spotify</em> account once you have done this.
+                        You can connect your <em>Oura</em> account once you have done this.
                     </p>
                 </li>
                 <li>
@@ -42,7 +42,7 @@
                 <li>
                     <b>Upload the data</b>
                     <p class="mb-1">
-                        You will be redirected back to <em>SpotifyConnect</em> and can then start using the app.<br/>
+                        You will be redirected back to <em>OH OuraConnect</em> and can then start using the app.<br/>
                     </p>
                 </li>
             </ol>
