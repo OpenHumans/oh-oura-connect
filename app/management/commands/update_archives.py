@@ -1,6 +1,6 @@
 from django.core.management.base import BaseCommand
-from app.models import SpotifyUser
-from app.tasks import update_play_history
+from app.models import OuraUser
+from app.tasks import update_oura_history
 import time
 import requests
 
@@ -10,10 +10,10 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         # cheat to wake up sleeping worker
-        requests.get('https://oh-spotify-integration.herokuapp.com/')
+        requests.get('https://oh-oura-connect.herokuapp.com/')
 
-        spotify_users = SpotifyUser.objects.all()
-        for sp in spotify_users:
-            update_play_history.delay(sp.user.oh_member.oh_id)
+        oura_users = OuraUser.objects.all()
+        for sp in oura_users:
+            update_oura_history.delay(sp.user.oh_member.oh_id)
             print('submitted update for {}'.format(sp.id))
             time.sleep(2)

@@ -4,7 +4,7 @@ from celery import Celery
 
 load_dotenv(dotenv_path=find_dotenv(), verbose=True)
 
-app = Celery('spotify')
+app = Celery('oura')
 
 CELERY_BROKER_URL = os.getenv('REDIS_URL')
 app.conf.update({
