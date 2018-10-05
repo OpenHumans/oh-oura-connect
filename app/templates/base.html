@@ -38,9 +38,6 @@
                             Dashboard
                         </a>
                     </li>
-                    <a class="nav-link" href="{% url 'about' %}">
-                        FAQ
-                    </a>
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'logout' %}">Logout</a>
                     </li>
@@ -49,6 +46,9 @@
                         <a class="nav-link" href="{% url 'authorize' %}">Login</a>
                     </li>
                 {% endif %}
+                <a class="nav-link" href="{% url 'about' %}">
+                    FAQ
+                </a>
             </ul>
         </div>
     </nav>
