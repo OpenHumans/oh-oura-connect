@@ -3,7 +3,7 @@
 {% block content %}
     <div class="jumbotron">
         <h1 class="display-4">OH Oura Connect</h1>
-        <p class="lead">This connects your Oura account to OpenHumans and recommends music to you based on a set of parameters that you can tweak</p>
+        <p class="lead">This connects your Oura account to OpenHumans to export your Oura data to Open Humans.</p>
         <hr class="my-4">
         <p>
             <a href="{% if request.user.is_authenticated %} {% url 'dashboard' %} {% else %} {% url 'authorize' %} {% endif %}">
