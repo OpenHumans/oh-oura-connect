@@ -1,0 +1,80 @@
+{% load static %}
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css">
+    <title>{% block title %}SpotifyConnect{% endblock %} - OpenHumans</title>
+
+    <style>
+        .footer {
+            background-color: #f8f9fa;
+            height: 60px;
+        }
+    </style>
+    <!-- Open Humans Theming -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/open-humans-theming.css' %}">
+
+    {% block styles %} {% endblock %}
+</head>
+
+<body>
+<div class="container-fluid mt-3">
+
+    <nav class="navbar navbar-expand-lg navbar-default mb-3">
+        <a class="navbar-brand" href="{% url 'dashboard' %}">SpotifyConnect</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav_content">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="nav_content">
+            <ul class="navbar-nav ml-auto">
+                {% if request.user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% if request.user.is_superuser %}{% url 'admin_config' %}{% else %}{% url 'dashboard' %}{% endif %}">
+                            Dashboard
+                        </a>
+                    </li>
+                    <a class="nav-link" href="{% url 'recommendations' %}">
+                        Recommendations
+                    </a>
+                    <a class="nav-link" href="{% url 'about' %}">
+                        FAQ
+                    </a>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'authorize' %}">Login</a>
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+
+    <div class="mx-2">
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+        {% endfor %} {% block content %} {% endblock %}
+    </div>
+
+
+    <div class="footer p-3 my-3">
+        <a href="#">Create your own project on
+            <em>Open Humans</em>
+        </a>
+    </div>
+
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/js/bootstrap.min.js"></script> {% block scripts %} {% endblock %}
+</body>
+
+</html>

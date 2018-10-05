@@ -1,0 +1,24 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+django = "*"
+python-dotenv = "*"
+dj-database-url = "*"
+"psycopg2-binary" = "*"
+open-humans-api = "*"
+whitenoise = "*"
+celery = "*"
+gunicorn = "*"
+redis = "*"
+
+[dev-packages]
+ipython = "*"
+pylint = "*"
+pylint-django = "*"
+django-debug-toolbar = "*"
+
+[requires]
+python_version = "3.6"

@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <div>
+        {% for track in recommendations.tracks %}
+            <div class="card m-3 d-inline-block" style="width: 30rem;">
+                {% if track.album.images|length %}
+                    <img class="card-img-top" src="{{ track.album.images.0.url }}" alt="Card image cap">
+                {% endif %}
+                <div class="card-body">
+                    <h5 class="card-title"><a href="{{ track.external_urls.spotify }}">{{ track.name }}</a></h5>
+                    <span class="card-text">{{ track.album.name }}</span>
+                    <span class="float-right">{{ track.artists.0.name }}</span>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+{% endblock %}

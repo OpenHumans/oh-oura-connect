@@ -1,0 +1,122 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-5">
+        <h2>About</h2>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Who's running <i>SpotifyConnect</i>?</h3>
+          </div>
+          <div class="panel-body">
+          <p>
+            This project is run by
+            <a href="https://openhumansfoundation.org/">the Open Humans Foundation</a>.
+            You can always get in touch with it via email at <a href="mailto:support@openhumans.org">email</a> at <code>support@openhumans.org</code>.
+
+            <a href='https://www.openhumans.org/activity/spotify-integration/'>See this project's activity page on Open Humans</a>.
+          </p>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Which data do you store?</h3>
+          </div>
+          <div class="panel-body">
+          <p>
+            We store different kinds of data depending on whether you are accessing this app as a guest
+            or if you are being logged in with your Open Humans account:
+          </p>
+          <ol>
+            <li>Generally, our hoster <i><a href='https://www.heroku.com'>Heroku</a></i> stores and gives us access to</li>
+            <ol>
+              <li>IP addresses used to access this app</li>
+              <li>the sub-pages visited on this app</li>
+              <li>(Both are stored for up to a week)</li>
+            </ol>
+            <li>By logging in with your <i>Open Humans</i> account we can access:</li>
+            <ol>
+              <li>Spotify archives generated through this app itself</li>
+              <li>(You can always review this app's permissions <a href='https://www.openhumans.org/activity/spotify-integration/'>on Open Humans</a>)</li>
+            </ol>
+            <li>By logging in with your <i>Spotify account</i> account we can access:</li>
+            <ol>
+              <li>A list of your recently played songs</li>
+              <li>(You can always review this app's permissions <a href='https://www.spotify.com/us/account/apps/'>on Spotify</a>)</li>
+            </ol>
+            <li>SpotifyConnect will store:</li>
+            <ol>
+              <li>your random Open Humans identifier that's unrelated to your username on Open Humans</li>
+              <li>the authentication credentials that allow us to read & write your Spotify archive on Open Humans</li>
+              <li>the authentication credentials that allow us to read your list of last-played songs on Spotify</li>
+            </ol>
+          </ol>
+          <p>
+            SpotifyConnect is covered by Open Humans' <a href='https://www.openhumans.org/terms/'>Terms of Use</a> and
+            <a href='https://www.openhumans.org/data-use/'>Data Use Policy</a>:
+          </p>
+          <p>
+            You can always delete your account and all associated data from the <a href="{%url 'dashboard'%}"><i>Dashboard</i></a>.
+            This includes the Open Humans and Spotify authentication credentials, i.e. we won't be able to access your Open Humans & Spotify accounts any longer.
+          </p>
+          <p>
+            Removing the authorization on Open Humans does not automatically delete your Spotify archive on Open Humans; if you
+            want this to occur, you should delete your account here before withdrawing from this project in the Open Humans site.
+          </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-7">
+        <h2>FAQ</h2>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">What does this application do?</h3>
+          </div>
+          <div class="panel-body">
+            <p>
+              With this application you can link your Spotify account to your Open Humans account. Once you have created this link we will regularly
+              request the list of the last songs you have played and add them to a growing archive of the songs you have listened to. That way you can create a growing
+              copy of what songs, artists etc. you have listened to over time.
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">How does it work?</h3>
+          </div>
+          <div class="panel-body">
+          <p>
+            You can log-in into this application with your Open Humans account. This allows us to deposit data in your Open Humans account. After this you can
+            connect your Spotify account to SpotifyConnect. This enables us to access your list of recently played songs. We will automatically ask Spotify for your the last 50 songs you have played once per hour.
+            The played items will be written into your Open Humans account.
+          </p>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">What permissions to you request from my Spotify account?</h3>
+          </div>
+          <div class="panel-body">
+          <p>
+            We only request the <code>user-read-recently-played</code> and <code>streaming</code> permissions. These permissions enable us to exclusively read your last played songs and allow you to stream songs
+            through the experimental Recommendation function.
+          </p>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Why is my archive empty?</h3>
+          </div>
+          <div class="panel-body">
+          <p>
+            For this app to work you need to enable the <code>Publish my activity on Spotify</code> option in your Spotify settings. If this is not turned on we will not be able to request your recently played items.
+            You can turn this setting on/off in your Spotify application.
+          </p>
+          </div>
+        </div>
+      </div>
+  </div>
+</div>
+
+{% endblock %}
