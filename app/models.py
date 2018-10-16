@@ -51,11 +51,12 @@ class OuraUser(models.Model):
         res = requests.post('https://api.ouraring.com/oauth/token',
                             data={
                                 'grant_type': 'refresh_token',
-                                'refresh_token': self.refresh_token,
                                 'client_id': os.getenv('OURA_CLIENT_ID'),
-                                'client_secret': os.getenv('OURA_CLIENT_SECRET')
+                                'client_secret': os.getenv('OURA_CLIENT_SECRET'),
+                                'refresh_token': self.refresh_token
                             }).json()
         self.access_token = res['access_token']
+        self.refresh_token = res['refresh_token']
         self.expiration_time: arrow.utcnow().shift(
             seconds=res['expires_in']
         ).datetime
