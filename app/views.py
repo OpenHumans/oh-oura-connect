@@ -17,6 +17,8 @@ OURA_BASE_URL = 'https://api.ouraring.com/v1'
 
 
 def info(request):
+    if request.user.is_authenticated:
+        return redirect('dashboard')
     return render(request, 'info.html')
 
 
