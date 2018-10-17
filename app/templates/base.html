@@ -6,14 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css">
-    <title>{% block title %}OH Oura Connect{% endblock %} - OpenHumans</title>
+    <title>{% block title %}OH Oura Connect{% endblock %} - Open Humans</title>
 
-    <style>
-        .footer {
-            background-color: #f8f9fa;
-            height: 60px;
-        }
-    </style>
+    <!-- Additional styles -->
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+
     <!-- Open Humans Theming -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/open-humans-theming.css' %}">
@@ -24,48 +21,58 @@
 <body>
 <div class="container-fluid mt-3">
 
-    <nav class="navbar navbar-expand-lg navbar-default mb-3">
-        <a class="navbar-brand" href="{% url 'dashboard' %}">OH Oura Connect</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav_content">
-            <span class="navbar-toggler-icon"></span>
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-open-humans mb-3">
+        <a class="navbar-brand" href="/">OH Oura Connect</a>
+        <button class="navbar-toggler custom-toggler" type="button" data-toggle="collapse" data-target="#nav_content">
+            <span class="navbar-toggler-icon custom-toggler"></span>
         </button>
 
         <div class="collapse navbar-collapse" id="nav_content">
-            <ul class="navbar-nav ml-auto">
-                {% if request.user.is_authenticated %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% if request.user.is_superuser %}{% url 'admin_config' %}{% else %}{% url 'dashboard' %}{% endif %}">
-                            Dashboard
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'logout' %}">Logout</a>
-                    </li>
-                {% else %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'authorize' %}">Login</a>
-                    </li>
-                {% endif %}
-                <a class="nav-link" href="{% url 'about' %}">
-                    FAQ
+          <ul class="navbar-nav ml-auto">
+            {% if request.user.is_authenticated %}
+            <li class="nav-item">
+                <a class="nav-link" href="{% if request.user.is_superuser %}{% url 'admin_config' %}{% else %}{% url 'dashboard' %}{% endif %}">
+                    Dashboard
                 </a>
-            </ul>
+            </li>
+            {% endif %}
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'about' %}">
+                  About/FAQ
+              </a>
+            </li>
+            {% if request.user.is_authenticated %}
+              <form class="form-inline mt-2 mt-md-0" action="{% url 'logout' %}" method="post">
+                {% csrf_token %}
+                <button class="btn btn-sm btn-info" type="submit">Log out</button>
+              </form>
+            {% else %}
+            <li class="nav-item">
+              <a href="{% url 'authorize' %}"><button class="btn btn-sm btn-primary">Log in</button></a>
+            </li>
+            {% endif %}
+          </ul>
         </div>
     </nav>
+  </header>
 
-    <div class="mx-2">
-        {% for message in messages %}
-            <div class="alert alert-{{ message.tags }}">{{ message }}</div>
-        {% endfor %} {% block content %} {% endblock %}
+  <main role="main" class="container">
+    {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+    {% endfor %}
+    {% block content %} {% endblock %}
+  </main>
+
+
+  <div class="footer">
+    <div class="container">
+      Explore <a href="https://www.openhumans.org/activity/oura-connect/">this
+        project</a> and more on <a href="https://www.openhumans.org/">
+        <em>Open Humans</em>
+      </a>!
     </div>
-
-
-    <div class="footer p-3 my-3">
-        <a href="#">Create your own project on
-            <em>Open Humans</em>
-        </a>
-    </div>
-
+  </div>
 
 </div>
 
