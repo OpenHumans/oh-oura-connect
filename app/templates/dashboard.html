@@ -9,7 +9,7 @@
             <h2>Your data</h2>
             {%if archive_url%}
               <a href="{{archive_url.url}}" class="btn btn-primary">Download Archive</a>
-            <small id="disconnectHelp" class="form-text text-muted">The archive was last updated at {{archive_url.created}} (UTC).</small>
+            <small id="disconnectHelp" class="form-text text-muted mb-3">The archive was last updated at {{archive_url.created}} (UTC).</small>
             {%else%}
             You don't have any Oura data in your account yet.
             {%endif%}
@@ -19,7 +19,7 @@
             <form action="{% url 'update_archive' %}" method="post">
                 {% csrf_token %}
                 <button type="submit" class="btn btn-primary">Update your Archive</button>
-                    <small id="disconnectHelp" class="form-text text-muted">We automatically update your archive once per hour. Click this button if you want to request the latest data earlier. It can take some minutes for the updated data to appear here.</small>
+                    <small id="disconnectHelp" class="form-text text-muted mb-3">We automatically update your archive once per hour. Click this button if you want to request the latest data earlier. It can take some minutes for the updated data to appear here.</small>
             </form>
 
             {%endif%}
