@@ -9,7 +9,7 @@
             <h2>Your data</h2>
             {%if archive_url%}
               <a href="{{archive_url.url}}" class="btn btn-primary">Download Archive</a>
-            <small id="disconnectHelp" class="form-text text-muted">The archive was last updated at {{archive_url.created}} (UTC).</small>
+            <small id="disconnectHelp" class="form-text text-muted mb-3">The archive was last updated at {{archive_url.created}} (UTC).</small>
             {%else%}
             You don't have any Oura data in your account yet.
             {%endif%}
@@ -19,7 +19,7 @@
             <form action="{% url 'update_archive' %}" method="post">
                 {% csrf_token %}
                 <button type="submit" class="btn btn-primary">Update your Archive</button>
-                    <small id="disconnectHelp" class="form-text text-muted">We automatically update your archive once per hour. Click this button if you want to request the latest data earlier. It can take some minutes for the updated data to appear here.</small>
+                    <small id="disconnectHelp" class="form-text text-muted mb-3">We automatically update your archive once per hour. Click this button if you want to request the latest data earlier. It can take some minutes for the updated data to appear here.</small>
             </form>
 
             {%endif%}
@@ -30,18 +30,18 @@
               <form action="{% url 'oura_delink' %}" method="post">
                   {% csrf_token %}
                   <button type="submit" class="btn btn-danger">Disconnect Oura account</button>
-                      <small id="disconnectHelp" class="form-text text-muted">Disconnecting your Oura account deletes our credentials used to update your Oura data on Open Humans. It does not delete
+                      <small id="disconnectHelp" class="form-text text-muted mb-3">Disconnecting your Oura account deletes our credentials used to update your Oura data on Open Humans. It does not delete
                       your archive that is stored on Open Humans. This app will also still be able to read your existing archive file on Open Humans.</small>
               </form>
               {%else%}
                   <a href="{%url 'oura_authorize' %}" class="btn btn-primary">Connect Oura account</a>
-                  <small id="disconnectHelp" class="form-text text-muted">You have not connected an Oura account yet. Click the button above to link your Oura account to enable us to create your own Oura archive on Open Humans.</small>
+                  <small id="disconnectHelp" class="form-text text-muted mb-3">You have not connected an Oura account yet. Click the button above to link your Oura account to enable us to create your own Oura archive on Open Humans.</small>
               {%endif%}
 
               <form action="{% url 'delete_user' %}" method="post">
                   {% csrf_token %}
-                  <button type="submit" class="btn btn-danger">Delete OH Oura Connect Account</button>
-                      <small id="disconnectHelp" class="form-text text-muted">Clicking this button deletes your account on this website. This will delete all of your data stored on this website,
+                  <button type="submit" class="btn btn-danger">Delete Open Humans connection</button>
+                      <small id="disconnectHelp" class="form-text text-muted mb-3">Clicking this button deletes your account on this website. This will delete all of your data stored on this website,
                         After the deletion we will not be able to access your Oura or Open Humans data. This does not delete your archive that is stored on Open Humans, it remains in your Open Humans account.</small>
               </form>
         </div>

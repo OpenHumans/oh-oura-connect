@@ -4,82 +4,42 @@
 
   <div class="container">
     <div class="row">
-      <div class="col-md-5">
-        <h2>About</h2>
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h3 class="panel-title">Who's running <i>OH Oura Connect</i>?</h3>
-          </div>
-          <div class="panel-body">
-          <p>
-            This project is run by
-            <a href="https://openhumansfoundation.org/">the Open Humans Foundation</a>.
-            You can always get in touch with it via email at <a href="mailto:support@openhumans.org">email</a> at <code>support@openhumans.org</code>.
-
-            <a href='https://www.openhumans.org/activity/oura-connect/'>See this project's activity page on Open Humans</a>.
-          </p>
-          </div>
-        </div>
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h3 class="panel-title">Which data do you store?</h3>
-          </div>
-          <div class="panel-body">
-          <p>
-            We store different kinds of data depending on whether you are accessing this app as a guest
-            or if you are being logged in with your Open Humans account:
-          </p>
-          <ol>
-            <li>Generally, our hoster <i><a href='https://www.heroku.com'>Heroku</a></i> stores and gives us access to</li>
-            <ol>
-              <li>IP addresses used to access this app</li>
-              <li>the sub-pages visited on this app</li>
-              <li>(Both are stored for up to a week)</li>
-            </ol>
-            <li>By logging in with your <i>Open Humans</i> account we can access:</li>
-            <ol>
-              <li>Oura archives generated through this app itself</li>
-              <li>(You can always review this app's permissions <a href='https://www.openhumans.org/activity/oura-connect/'>on Open Humans</a>)</li>
-            </ol>
-            <li>By logging in with your <i>Oura account</i> account we can access:</li>
-            <ol>
-              <li>Your profile (age, weight, gender)</li>
-              <li>Your sleep records</li>
-              <li>Your activity records</li>
-              <li>Your readiness records</li>
-            </ol>
-            <li>OH Oura Connect will store:</li>
-            <ol>
-              <li>your random Open Humans identifier that's unrelated to your username on Open Humans</li>
-              <li>the authentication credentials that allow us to read & write your Oura archive on Open Humans</li>
-              <li>the authentication credentials that allow us to read your data from Oura</li>
-            </ol>
-          </ol>
-          <p>
-            OH Oura Connect is covered by Open Humans' <a href='https://www.openhumans.org/terms/'>Terms of Use</a> and
-            <a href='https://www.openhumans.org/data-use/'>Data Use Policy</a>:
-          </p>
-          <p>
-            You can always delete your account and all associated data from the <a href="{%url 'dashboard'%}"><i>Dashboard</i></a>.
-            This includes the Open Humans and Oura authentication credentials, i.e. we won't be able to access your Open Humans & Oura accounts any longer.
-          </p>
-          <p>
-            Removing the authorization on Open Humans does not automatically delete your Oura archive on Open Humans; if you
-            want this to occur, you should delete your account here before withdrawing from this project in the Open Humans site.
-          </p>
-          </div>
-        </div>
+      <div class="col-md-12">
+        <h2>About / FAQ</h2>
       </div>
-      <div class="col-md-7">
-        <h2>FAQ</h2>
+      <div class="col-md-6">
         <div class="panel panel-default">
           <div class="panel-heading">
-            <h3 class="panel-title">What does this application do?</h3>
+            <h3 class="panel-title">Who's running this?</h3>
           </div>
           <div class="panel-body">
             <p>
-              With this application you can link your Oura account to your Open Humans account. Once you have created this link we will regularly
-              update your Oura data on Open Humans and add them to your growing archive of Oura records.
+              This site is run by
+              <a href="https://openhumansfoundation.org/">the Open Humans
+              Foundation</a> and is covered by Open Humans'
+              <a href='https://www.openhumans.org/terms/'>Terms of Use</a> and
+              <a href='https://www.openhumans.org/data-use/'>Data Use Policy</a>.
+              You can always get in touch with us at
+              <a href="mailto:support@openhumans.org">support@openhumans.org</a>.
+            </p>
+            <p>
+              See this project's page on Open Humans:<br><a href='https://www.openhumans.org/activity/oura-connect/'>https://www.openhumans.org/activity/oura-connect/</a>
+            </p>
+            <p>
+              See this app's code on GitHub:<br><a href='https://github.com/OpenHumans/oh-oura-connect'>https://github.com/OpenHumans/oh-oura-connect</a>
+            </p>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">What does this do?</h3>
+          </div>
+          <div class="panel-body">
+            <p>
+              This site allows you to link your Oura account and your Open
+              Humans account. Once you have created these links we will
+              create and regularly update an archive of your Oura data on
+              Open Humans.
           </div>
         </div>
         <div class="panel panel-default">
@@ -87,21 +47,89 @@
             <h3 class="panel-title">How does it work?</h3>
           </div>
           <div class="panel-body">
-          <p>
-            You can log-in into this application with your Open Humans account. This allows us to deposit data in your Open Humans account. After this you can
-            connect your Oura account to OH Oura Connect. This enables us to access your Oura data. We will automatically ask Oura for new data in regular intervals.
-            These data will be written into your Open Humans account.
-          </p>
+            <p>
+              You can log in into this site with your Open Humans account.
+              This allows us to deposit data in your Open Humans account.
+            </p>
+            <p>
+              After this you can connect your Oura account to this site.
+              This enables us to access your Oura data. We will automatically
+              ask Oura for new data in regular intervals. These data will be
+              written into an archive in your Open Humans account.
+            </p>
+            <p>
+              Your data is private by default. Open Humans gives you the
+              ability to share data with projects you select, but only if and
+              when you choose to do so.
+            </p>
           </div>
         </div>
         <div class="panel panel-default">
           <div class="panel-heading">
-            <h3 class="panel-title">What permissions to you request from my Oura account?</h3>
+            <h3 class="panel-title">What we get from Oura</h3>
           </div>
           <div class="panel-body">
           <p>
-            We only request the <code>personal</code> and <code>daily</code> permissions. These permissions enable us to read your daily entries for sleep, activities and readiness along with your age/sex/weight.
+            We only request the <code>personal</code> and <code>daily</code>
+            permissions. These permissions enable us to read your daily
+            entries for sleep, activities and readiness along with your
+            age/sex/weight.
+          </p>
+          <p>
             We do not get access to your email address!
+          </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Data management</h3>
+          </div>
+          <div class="panel-body">
+          <p>
+            This site can access and store various types of data for visitors
+            and associated with connected accounts.
+          </p>
+          <p>
+            When you connect an Oura account, this site will access the
+            following data and store it as an archive in your Open Humans
+            account.
+          </p>
+          <ol>
+            <li>Your profile (age, weight, gender)</li>
+            <li>Your sleep records</li>
+            <li>Your activity records</li>
+            <li>Your readiness records</li>
+          </ol>
+          <p>
+            The site also stores the following data when you connect accounts
+            from Oura and Open Humans.
+          </p>
+          <ol>
+            <li>an anonymous identifier for your Open Humans account</li>
+            <li>authentication credentials that allow us to read &amp; write your Oura archive on Open Humans</li>
+            <li>authentication credentials that allow us to read your data from Oura</li>
+          </ol>
+          <p>
+            Finally, this site's hoster
+            <i><a href='https://www.heroku.com'>Heroku</a></i> stores and gives
+            us access to the IP addresses of visitors, and pages visited on
+            this site. These logs may be stored for up to a week.
+          </p>
+          <p>
+            You can always delete your account and all associated data from
+            the <a href="{%url 'dashboard'%}"><i>Dashboard</i></a>.
+            This includes the Open Humans and Oura authentication credentials,
+            i.e. we won't be able to access your Open Humans &amp; Oura
+            accounts any longer.
+          </p>
+          <p>
+            Removing the authorization on Open Humans does not automatically
+            delete your Oura archive on Open Humans; if you want this to occur,
+            you should delete your account here before withdrawing from
+            <a href="https://www.openhumans.org/activity/oura-connect/">this
+            project</a> in the Open Humans site.
           </p>
           </div>
         </div>

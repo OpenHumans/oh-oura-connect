@@ -143,5 +143,6 @@ def update_archive(request):
 
 
 def log_out(request):
-    logout(request)
+    if request.method == "POST":
+        logout(request)
     return redirect('info')

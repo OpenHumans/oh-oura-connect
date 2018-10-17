@@ -1,57 +1,34 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <div class="jumbotron">
-        <h1 class="display-4">OH Oura Connect</h1>
-        <p class="lead">This connects your Oura account to OpenHumans to export your Oura data to Open Humans.</p>
-        <hr class="my-4">
-        <p>
-            <a href="{% if request.user.is_authenticated %} {% url 'dashboard' %} {% else %} {% url 'authorize' %} {% endif %}">
-                Log in
-            </a>
-            to get started!
-        </p>
+  <div class="row mb-4">
+    <div class="col-12">
+      <h1>OH Oura Connect</h1>
+      <p>
+        The Oura ring is a wearable device that tracks sleep and activity data.
+        <a href="https://www.openhumans.org/activity/oura-connect/">This project</a>
+        connects your Oura account to Open Humans to export
+        your Oura data to Open Humans, including: age, weight, gender,
+        activity, sleep, temperature, and heart rate.
+      </p>
+      <p>
+        This data transfer app is operated by
+        <a href="http://openhumansfoundation.org">Open Humans Foundation</a>
+        and is governed by the
+        <a href="https://www.openhumans.org/terms">Open Humans Terms of Use</a>.
+      </p>
+      <p>
+        To learn more about the app's management and more, please see
+        the <a href="{% url 'about' %}">FAQ</a>.
+      </p>
+      <p>
+        To get started:
+      </p>
+      <a class="btn btn-primary btn-lg ml-3" href="{% if request.user.is_authenticated %} {% url 'dashboard' %} {% else %} {% url 'authorize' %} {% endif %}">
+          Log in to Open Humans
+      </a>
     </div>
-    <div class="row">
-        <div class="col-6">
-            <h2>FAQ</h2>
-            <div>
-                <h4>Will my data be public?</h4>
-                <p>
-                    The short answer: No. <br/>
-                    The longer answer: No, unless you decide that you want to make this data public. <br/>
-                    If that is the case then you can head over to <a href="#"></a>Open Humans and make the full archive data publicly available.
-                </p>
-            </div>
-        </div>
-        <div class="col-6">
-            <h2>How it works</h2>
-            <ol>
-                <li>
-                    <b>Login or create an account</b>
-                    <p class="mb-1">
-                        You can connect your <em>Oura</em> account once you have done this.
-                    </p>
-                </li>
-                <li>
-                    <b>Authorize app</b>
-                    <p class="mb-1">
-                        This authorizes us to deposit your archive into your Open Humans account.
-                    </p>
-                </li>
-                <li>
-                    <b>Upload the data</b>
-                    <p class="mb-1">
-                        You will be redirected back to <em>OH OuraConnect</em> and can then start using the app.<br/>
-                    </p>
-                </li>
-            </ol>
-            <a href="{% if request.user.is_authenticated %} {% url 'dashboard' %} {% else %} {% url 'authorize' %} {% endif %}"
-               class="btn btn-primary btn-lg ml-3">
-                Get Started
-            </a>
-        </div>
-    </div>
+  </div>
 {% endblock %}
 
 {% block styles %}
