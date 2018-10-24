@@ -12,7 +12,10 @@ ALLOWED_HOSTS = ["*"]
 
 INTERNAL_IPS = ['127.0.0.1']
 
-DEBUG = os.environ.get('DEBUG')
+if os.environ.get('DEBUG') == "True":
+    DEBUG = True
+else:
+    DEBUG = False
 
 INSTALLED_APPS = [
     'django.contrib.auth',
