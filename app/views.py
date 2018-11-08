@@ -45,8 +45,8 @@ def authenticate(request):
         access_token=res['access_token']
     )['project_member_id']
 
-    member = OpenHumansMember.objects.get_or_create(
-        user=User.objects.update_or_create(username=oh_id)[0],
+    member, created = OpenHumansMember.objects.update_or_create(
+        user=User.objects.get_or_create(username=oh_id)[0],
         oh_id=oh_id,
         defaults={
             'access_token': res['access_token'],
@@ -55,7 +55,8 @@ def authenticate(request):
                 seconds=res['expires_in']
             ).datetime
         }
-    )[0]
+    )
+    print(created)
 
     login(request, member.user)
     return redirect('dashboard')
@@ -94,7 +95,7 @@ def oura_authenticate(request):
                             'client_secret': os.getenv('OURA_CLIENT_SECRET')
                         }).json()
 
-    OuraUser.objects.get_or_create(
+    OuraUser.objects.update_or_create(
         user=request.user,
         defaults={
             'access_token': res['access_token'],
