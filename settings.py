@@ -17,6 +17,10 @@ if os.environ.get('DEBUG') == "True":
 else:
     DEBUG = False
 
+ON_HEROKU = os.getenv('ON_HEROKU', 'false').lower() == 'true'
+if ON_HEROKU:
+    SECURE_SSL_REDIRECT = True
+
 INSTALLED_APPS = [
     'django.contrib.auth',
     'django.contrib.contenttypes',
