@@ -115,11 +115,18 @@ def dashboard(request):
         oura_user = request.user.oura_user
     else:
         oura_user = None
+    archive_url = get_download_url(request.user.oh_member)
+    if archive_url == 'token_broken':
+        logout(request)
+        messages.error(
+            request,
+            'Please re-authenticate us to use the Oura integration')
+        return redirect('info')
     return render(
         request,
         'dashboard.html',
         {'oura_user': oura_user,
-         'archive_url': get_download_url(request.user.oh_member)})
+         'archive_url': archive_url})
 
 
 @member_required
