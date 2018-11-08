@@ -46,7 +46,7 @@ def authenticate(request):
     )['project_member_id']
 
     member = OpenHumansMember.objects.get_or_create(
-        user=User.objects.get_or_create(username=oh_id)[0],
+        user=User.objects.update_or_create(username=oh_id)[0],
         oh_id=oh_id,
         defaults={
             'access_token': res['access_token'],
