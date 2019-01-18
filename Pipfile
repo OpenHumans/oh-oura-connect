@@ -14,6 +14,7 @@ celery = "*"
 gunicorn = "*"
 redis = "*"
 requests = "*"
+ipython = "*"
 
 [dev-packages]
 ipython = "*"
