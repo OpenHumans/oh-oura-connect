@@ -40,6 +40,7 @@ def simple_oura_import(oura_user):
 def update_oura_history(oh_member_id):
     oh_member = OpenHumansMember.objects.get(oh_id=oh_member_id)
     oura_user = oh_member.user.oura_user
+    print('trying to update {}'.format(oura_user.id))
     oura_archive = simple_oura_import(oura_user)
     with tempfile.TemporaryFile() as f:
         js = json.dumps(oura_archive)
