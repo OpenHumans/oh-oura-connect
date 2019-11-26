@@ -27,6 +27,7 @@ class OpenHumansMember(models.Model):
             refresh_token=self.refresh_token,
             redirect_uri=settings.OH_REDIRECT_URL
         )
+        print(res)
         self.access_token = res['access_token']
         self.refresh_token = res['refresh_token']
         self.expiration_time = arrow.utcnow().shift(
