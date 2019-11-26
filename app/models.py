@@ -55,10 +55,12 @@ class OuraUser(models.Model):
                                 'client_secret': os.getenv('OURA_CLIENT_SECRET'),
                                 'refresh_token': self.refresh_token
                             }).json()
-        print(res)
-        self.access_token = res['access_token']
-        self.refresh_token = res['refresh_token']
-        self.expiration_time: arrow.utcnow().shift(
-            seconds=res['expires_in']
-        ).datetime
-        self.save()
+        if 'access_token' not in res.keys():
+            print('failed updating {}'.format(self.user.oh_member.oh_id))
+        else:
+            self.access_token = res['access_token']
+            self.refresh_token = res['refresh_token']
+            self.expiration_time: arrow.utcnow().shift(
+                seconds=res['expires_in']
+            ).datetime
+            self.save()
