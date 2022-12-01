@@ -67,6 +67,10 @@ def oura_authorize(request):
     scopes = [
         'personal',
         'daily',
+        'heartrate',
+        'workout',
+        'tag',
+        'session'
     ]
     auth_params = {
         'client_id': os.getenv('OURA_CLIENT_ID'),
