@@ -91,22 +91,23 @@ def update_oura_history(oh_member_id):
     oh_member = OpenHumansMember.objects.get(oh_id=oh_member_id)
     oura_user = oh_member.user.oura_user
     print('trying to update {}/{}'.format(oura_user.id, oh_member_id))
-    oura_archive = simple_oura_import(oura_user)
-    with tempfile.TemporaryFile() as f:
-        js = json.dumps(oura_archive)
-        js = str.encode(js)
-        f.write(js)
-        f.flush()
-        f.seek(0)
-        oh_access_token = oh_member.get_access_token()
-        ohapi.api.delete_file(
-            file_basename='oura-data.json',
-            access_token=oh_access_token)
-        ohapi.api.upload_stream(
-            f, "oura-data.json", metadata={
-                "description": "Oura records",
-                "tags": ["oura", 'activity', 'temperature', 'sleep']
-                }, access_token=oh_access_token)
-        print('updated v1 data for {}/{}'.format(oura_user.id, oh_member_id))
+    # "simple" import commented out as it's v1 API that is sunset
+    # oura_archive = simple_oura_import(oura_user)
+    # with tempfile.TemporaryFile() as f:
+    #    js = json.dumps(oura_archive)
+    #    js = str.encode(js)
+    #    f.write(js)
+    #    f.flush()
+    #    f.seek(0)
+    #    oh_access_token = oh_member.get_access_token()
+    #    ohapi.api.delete_file(
+    #        file_basename='oura-data.json',
+    #        access_token=oh_access_token)
+    #    ohapi.api.upload_stream(
+    #        f, "oura-data.json", metadata={
+    #            "description": "Oura records",
+    #            "tags": ["oura", 'activity', 'temperature', 'sleep']
+    #            }, access_token=oh_access_token)
+    #    print('updated v1 data for {}/{}'.format(oura_user.id, oh_member_id))
     update_v2_data(oh_member, oura_user)
     print('updated v2 data for {}/{}'.format(oura_user.id, oh_member_id))
